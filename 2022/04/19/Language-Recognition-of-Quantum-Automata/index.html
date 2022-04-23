@@ -87,7 +87,7 @@
 <meta property="og:description" content="整理一波量子有限自动机（Quantum Finite Automata）的语言识别能力。 基于综述文献《Automata and Quantum Computing》所梳理。  量子有限自动机模型Quantum computation is a generalization of classical computation and QFAs should be able to simulate c">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-19T12:18:08.000Z">
-<meta property="article:modified_time" content="2022-04-23T06:01:00.206Z">
+<meta property="article:modified_time" content="2022-04-23T06:12:47.953Z">
 <meta property="article:author" content="Zero-Star">
 <meta property="article:tag" content="Quantum Automata">
 <meta name="twitter:card" content="summary">
@@ -362,9 +362,12 @@
 <hr>
 <h1 id="量子有限自动机模型"><a href="#量子有限自动机模型" class="headerlink" title="量子有限自动机模型"></a>量子有限自动机模型</h1><p><em><strong>Quantum computation is a generalization of classical computation and QFAs should be able to simulate classical finite automaton, if we define QFAs in sufficiently general way.</strong></em></p>
 <blockquote>
-<p>General One-way QFA model can be specified by a 5-tuple<br>$(\Sigma, Q, {T_\sigma | \sigma\in\hat{\Sigma}}, q_1, R)$</p>
+<p><strong>1QFA</strong>可以由一个五元组表示<br>$(\Sigma, Q, {T_\sigma | \sigma\in\hat{\Sigma}}, q_1, R)$，其中：</p>
+<blockquote>
+<p>Q 是一个有限经典状态集合。定义<strong>1QFA</strong>的状态空间为希尔伯特空间$\it{H}$且满足$dim(\it{H})&#x3D;|Q|$，该空间下的基本状态集合为${|q\ket | q\in Q}$。；<br>$|\psi_0\ket&#x3D;|\q_1\ket$是量子有限自动机的初始状态;</p>
 </blockquote>
-<p>主流的单向量子有限自动机模型__One-way Quantum Finite Automata__ （__1QFA__）根据限制条件的不同分为以下几类（依次从 <em>restricted</em> 到 <em>general</em>）：</p>
+</blockquote>
+<p>主流的单向量子有限自动机模型<strong>One-way Quantum Finite Automata</strong> (<strong>1QFA</strong>)根据限制条件的不同分为以下几类（依次从 <em>restricted</em> 到 <em>general</em>）：</p>
 <ol>
 <li><strong>Moore-Crutchfield quantum finite automaton(MCQFA)</strong></li>
 </ol>
