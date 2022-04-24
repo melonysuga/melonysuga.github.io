@@ -378,7 +378,7 @@
 <li><strong>Kondacs-Watrous quantum finite automaton (KWQFA)</strong><ul>
 <li>测量多次(measured-many)模型，即在每次读入一个字符，执行完对应转移算子操作后，都对当前的量子状态执行一次测量操作；</li>
 <li>转移算子由酉算子(Unitary Operator) $U_\sigma$ 构成；</li>
-<li>字符串 $w&#x3D;w_1w_2\ldots w_k$，对每次的测量结果 $m_i$ 进行判定：<ul>
+<li>字符串 $w&#x3D;w_1w_2\ldots w_k$，每读入一个字符进行相应的转移算子操作后执行测量，对每次的测量结果 $m_i$ 进行判定：<ul>
 <li>如果 $m_i$ 落入接收状态(accepting states)或者拒绝状态(rejecting states)集合中，自动机计算结束；</li>
 <li>如果 $m_i$ 落入不间断状态(non-halting states)集合中且 $i&lt;k$，自动机继续读入下一个字符，计算继续；</li>
 <li>如果 $m_i$ 落入不间断状态集合中，但是 $i&#x3D;k$，即此时测量是最后一次，那么自动机也停止计算，该字符串定义为被拒绝。</li>
@@ -398,7 +398,7 @@
 <li><strong>Nayak quantum finite automata (NaQFA)</strong><ul>
 <li>测量多次(measured-many)模型；</li>
 <li>转移算子由一系列酉算子($U_i$)和测量算子($M_i$)组成 $T_\sigma&#x3D;U_1,M_1,\ldots,U_m,M_m$；</li>
-<li>字符串 $w&#x3D;w_1w_2\ldots w_k$，对每次转移算子中最后一次测量的输出结果 $m_i$ 进行判定<font color="red"> (待确认是否由最后一次测量输出结果判定)</font>：<ul>
+<li>字符串 $w&#x3D;w_1w_2\ldots w_k$，每读入一个字符进行相应的转移算子操作后执行测量，对每次转移算子中最后一次测量的输出结果 $m_i$ 进行判定<font color="red"> (待确认是否由最后一次测量输出结果判定)</font>：<ul>
 <li>如果 $m_i$ 落入接收状态或者拒绝状态集合中，自动机计算结束；</li>
 <li>如果 $m_i$ 落入不间断状态集合中且 $i&lt;k$，自动机继续读入下一个字符，计算继续；</li>
 <li>如果 $m_i$ 落入不间断状态集合中，但是 $i&#x3D;k$，即此时测量是最后一次，那么自动机也停止计算，该字符串定义为被拒绝。</li>
@@ -409,12 +409,43 @@
 <li><strong>General one-way quantum finite automaton (1QFA)</strong><ul>
 <li>测量多次(measured-many)模型；</li>
 <li>转移算子由一系列酉算子($U_i$)和测量算子($M_i$)组成 $T_\sigma&#x3D;U_1,M_1,\ldots,U_m,M_m$；</li>
-<li>其中每个 $U_i$ 或是 $M_i$ 都可能由上一次测量 $M_{i-1}$ 的输出结果来决定<blockquote>
+<li>其中每个 $U_i$ 或是 $M_i$ 都可能由上一次测量 $M_{i-1}$ 的输出结果来决定。<blockquote>
 <p><strong>1QFA</strong> 在研究中通常以不同的形式出现，例如：<strong>quantum finite automaton with ancilla qubits (QFA-A)<strong>，</strong>fully quantum finite automaton (CiQFA)<strong>，</strong>quantum finite automatom with control language (QFA-CL)<strong>，</strong>one-way finite automaton with quantum and classical states (1QCFA)</strong> <font color="red"> (待区分模型差别)</font></p>
 </blockquote>
 </li>
 </ul>
 </li>
+</ol>
+<p>从物理操作来看，每次在量子状态转换后进行一次测量操作是比较困难的，因此对测量行为进行限制，即在计算结束后最终执行一次测量，例如模型：<strong>MCQFA</strong> 。同样再对测量行为放松至每次量子状态转换后进行测量，但是测量结果不影响后续转移算子的选择，例如模型：<strong>LaQFA</strong> <font color="red"> (因此我将<strong>LaQFA</strong>归纳入测量一次模型中)</font>。</p>
+<h1 id="量子有限自动机和经典有限自动机之间的互模拟关系"><a href="#量子有限自动机和经典有限自动机之间的互模拟关系" class="headerlink" title="量子有限自动机和经典有限自动机之间的互模拟关系"></a>量子有限自动机和经典有限自动机之间的互模拟关系</h1><h2 id="经典有限自动机回顾"><a href="#经典有限自动机回顾" class="headerlink" title="经典有限自动机回顾"></a>经典有限自动机回顾</h2><ul>
+<li>确定有限自动机(<strong>deterministic finite automaton DFA</strong>)</li>
+<li>非确定有限自动机(<strong>nondeterministic finite automaton NFA</strong>)</li>
+<li><font color="red">概率有限自动机(<strong>probabilistic finite automaton PFA</strong>)</font></li>
+<li><font color="red">广义有限自动机(<strong>generalized finite automaton GFA of Turakainen</strong>)</font></li>
+</ul>
+<h2 id="语言识别-Language-recognition"><a href="#语言识别-Language-recognition" class="headerlink" title="语言识别(Language recognition)"></a>语言识别(Language recognition)</h2><blockquote>
+<p>和经典概率有限自动机一样，量子有限自动机在进行测量行为后，以一定概率塌缩到测量子空间上。因此，在量子有限自动机的计算过程中，出现概率行为，输入的字符串以概率 $p,p\in [0,1]$ 能够被自动机接收。</p>
+</blockquote>
+<p>令 $M$ 为自动机且 $\lambda \in R$。 定义 $M$ 能够以严格割点(strict cutpoint)或非严格割点(nonstrict cutpoint)识别语言 $L \subseteq \Sigma^*$ 如下：</p>
+<p>$L &#x3D; \lbrace w\in \Sigma^* | f_M(w)&gt;\lambda\rbrace$ 或 $L &#x3D; \lbrace f_M(w)\geq \lambda \rbrace$。</p>
+<ol>
+<li>如果能够找到这样一个割点 $\lambda$ 使得 $L$ 能够被 $M$ 识别，那么我们就称语言 $L\subseteq \Sigma^*$ 能够以 <em>unbounded error</em> 被 $M$ 识别。<blockquote>
+<p>The language $L\subseteq \Sigma^*$ recognized by $M$ with positive or negative one-sided unbounded error is defined as<br>$L&#x3D;\lbrace w\in \Sigma^* | f_M(w)&gt;0 \rbrace$ or $L&#x3D;\lbrace w\in \Sigma^* | f_M(w)&#x3D;1 \rbrace$.</p>
+</blockquote>
+</li>
+<li>我们称语言 $L\subseteq \Sigma^*$ 能够以 <em>error bound $\epsilon$</em> ($0\leq \epsilon &lt; 1&#x2F;2$) 被 $M$ 识别，如果满足：<ul>
+<li>对于任何语言集内的字符串 $w\in L$，都有 $f_M(w)\geq 1-\epsilon$；</li>
+<li>对于任何不属于语言集内的字符串 $w\notin L$，都有 $f_M(w)\leq \epsilon$。</li>
+</ul>
+</li>
+</ol>
+<h2 id="互模拟"><a href="#互模拟" class="headerlink" title="互模拟"></a>互模拟</h2><blockquote>
+<p>Here lists some basic simulation results that relate the power of <strong>1QFA</strong> to the power of their classical counterparts.</p>
+</blockquote>
+<ol>
+<li>给定一个状态个数为 $n$ 的概率有限自动机 $P$，存在一个同样状态个数为 $n$ 的单向量子有限自动机 $M$，使得对于任何字符串 $w\in \Sigma^*$，都有 $f_P(w)&#x3D;f_M(w)$。</li>
+<li>给定一个状态个数为 $n$ 的单向有限自动机 $M$，存在一个同样状态个数为 $n^2$ 的广义有限自动机 $G$，使得对于任何字符串 $w\in \Sigma^*$，都有 $f_M(w)&#x3D;f_G(W)$。</li>
+<li></li>
 </ol>
 
           
