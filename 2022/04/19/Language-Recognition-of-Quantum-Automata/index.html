@@ -87,7 +87,7 @@
 <meta property="og:description" content="整理一波量子有限自动机（Quantum Finite Automata）的语言识别能力。 基于综述文献《Automata and Quantum Computing》所梳理。  量子有限自动机模型Quantum computation is a generalization of classical computation and QFAs should be able to simulate c">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-19T12:18:08.000Z">
-<meta property="article:modified_time" content="2022-04-25T02:18:41.396Z">
+<meta property="article:modified_time" content="2022-04-25T06:21:13.289Z">
 <meta property="article:author" content="Zero-Star">
 <meta property="article:tag" content="Quantum Automata">
 <meta name="twitter:card" content="summary">
@@ -454,18 +454,30 @@
 <li>如果一个语言集 $L$ 能够被状态个数为 $n$ 且过程量子状态仅为混合态的单向量子有限状态机（例如：<strong>1QFA</strong>）以 <em>bounded error</em> 接收，那么该语言集同样能够被状态个数为 $2^{O(n^2)}$ 的单向确定性有限自动机所识别。</li>
 </ol>
 <h1 id="指数级降低状态数目"><a href="#指数级降低状态数目" class="headerlink" title="指数级降低状态数目"></a>指数级降低状态数目</h1><blockquote>
-<p><strong>1QFAs</strong> can indeed be exponentially more succinct than <strong>1PFAs</strong></p>
+<p><strong>1QFAs</strong> can indeed be exponentially more succinct than <strong>1PFAs</strong>.</p>
 </blockquote>
-<h2 id="Prime-Language"><a href="#Prime-Language" class="headerlink" title="Prime Language"></a>Prime Language</h2><p>我们定义由单字符(unary symbol)构成，并且该字符出现的次数能够被一个质数 $p$ 整除的字符串构成的语言集为 $PRIME_p$，即 $PRIME_p&#x3D;\lbrace a^i | p$ divides $i \rbrace$</p>
+<h2 id="Prime-Language"><a href="#Prime-Language" class="headerlink" title="Prime Language"></a>Prime Language</h2><p>我们定义由单字符(unary symbol)构成，并且该字符出现的次数能够被一个质数 $p$ 整除的字符串构成的语言集为 $PRIME_p$，即 $PRIME_p&#x3D;\lbrace a^i | p$ divides $i \rbrace$。</p>
 <h2 id="Succinctness-results"><a href="#Succinctness-results" class="headerlink" title="Succinctness results"></a>Succinctness results</h2><ol>
 <li><p>(i)如果一个质数 $p$，任何一个识别语言集 $PRIME_p$ 的 <strong>1PFA</strong> 有至少 $p$ 个状态；(ii)对任意 $\epsilon &gt; 0$，存在一个状态个数为 <em>O(log(p))</em> 的 <strong>MCQFA</strong> 以 <em>error bound $\epsilon$</em> 来识别相同的语言集 $PRIME_p$。</p>
 <blockquote>
 <p>proof to be added</p>
 </blockquote>
 </li>
-<li><p>可以对上述证明中的二状态 <strong>MCQFA</strong> 的幅角 $\phi&#x3D; 2\pi k_i&#x2F;p$ 进行选取。已知可用 $d&#x3D;2log(2p&#x2F; \epsilon)$ 个这样的二状态 <strong>MCQFA</strong> 结合，那么可以选取 $d$ 个值 $k_1,\ldots,k_d\in \lbrace 1,\ldots,p-1 \rbrace$ 使得最后结合的 <strong>MCQFA</strong> 能够以至少 $1-\epsilon$ 的概率拒绝所有不属于集合的字符串，即 $a^j \notin L_p$ 其中 $j$ 无法被 $p$ 整除。</p>
+<li><p>对上述证明中的二状态 <strong>MCQFA</strong> 的幅角 $\phi&#x3D; 2\pi k_i&#x2F;p$ 进行选取。已知可用 $d&#x3D;2log(2p&#x2F; \epsilon)$ 个这样的二状态 <strong>MCQFA</strong> 结合，那么可以选取 $d$ 个值 $k_1,\ldots,k_d\in \lbrace 1,\ldots,p-1 \rbrace$ 使得最后结合的 <strong>MCQFA</strong> 能够以至少 $1-\epsilon$ 的概率拒绝所有不属于集合的字符串，即 $a^j \notin L_p$ 其中 $j$ 无法被 $p$ 整除。</p>
+</li>
+<li><p>任何由一元字符(unary alphabet)构成的周期为 $n$ 的周期性语言都可以被状态个数为 $2\sqrt{6n}$ 的 <strong>MCQFA</strong> 以 <em>bounded error</em> 识别。</p>
+<blockquote>
+<p>main idea associated with <strong>Difference Cover for Integer Set</strong> to be added</p>
+</blockquote>
+</li>
+<li><p>存在一个语言集，其由单个字母构成并且周期为 $n$ 可以被状态个数为 $\Omega(\sqrt{n&#x2F;log(n)})$ 的 <strong>MCQFA</strong> 所识别。</p>
+</li>
+<li><p><font color="red">If the $l_1$ norm of the Fourier transform of the characteristic function of L (for a periodic L in one-symbol alphabet) is small, a <strong>1QFA</strong> with a smaller number of states is possible.</font></p>
 </li>
 </ol>
+<blockquote>
+<p><font color="pink">it is still open what is the biggest possible advantage of general <strong>1QFA</strong>s over <strong>1PFA</strong>s or <strong>1DFA</strong>s.</font></p>
+</blockquote>
 
       
     </div>
