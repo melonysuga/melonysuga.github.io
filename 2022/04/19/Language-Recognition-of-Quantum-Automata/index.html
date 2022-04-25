@@ -87,7 +87,7 @@
 <meta property="og:description" content="整理一波量子有限自动机（Quantum Finite Automata）的语言识别能力。 基于综述文献《Automata and Quantum Computing》所梳理。  量子有限自动机模型Quantum computation is a generalization of classical computation and QFAs should be able to simulate c">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-19T12:18:08.000Z">
-<meta property="article:modified_time" content="2022-04-24T08:01:12.913Z">
+<meta property="article:modified_time" content="2022-04-25T02:00:13.349Z">
 <meta property="article:author" content="Zero-Star">
 <meta property="article:tag" content="Quantum Automata">
 <meta name="twitter:card" content="summary">
@@ -423,8 +423,8 @@
 </ol>
 <p>从物理操作来看，每次在量子状态转换后进行一次测量操作是比较困难的，因此对测量行为进行限制，即在计算结束后最终执行一次测量，例如模型：<strong>MCQFA</strong> 。同样再对测量行为放松至每次量子状态转换后进行测量，但是测量结果不影响后续转移算子的选择，例如模型：<strong>LaQFA</strong> <font color="red"> (因此我将<strong>LaQFA</strong>归纳入测量一次模型中)</font>。</p>
 <h1 id="量子有限自动机和经典有限自动机之间的互模拟关系"><a href="#量子有限自动机和经典有限自动机之间的互模拟关系" class="headerlink" title="量子有限自动机和经典有限自动机之间的互模拟关系"></a>量子有限自动机和经典有限自动机之间的互模拟关系</h1><h2 id="经典有限自动机回顾"><a href="#经典有限自动机回顾" class="headerlink" title="经典有限自动机回顾"></a>经典有限自动机回顾</h2><ul>
-<li>确定有限自动机(<strong>deterministic finite automaton DFA</strong>)</li>
-<li>非确定有限自动机(<strong>nondeterministic finite automaton NFA</strong>)</li>
+<li>确定性有限自动机(<strong>deterministic finite automaton DFA</strong>)</li>
+<li>非确定性有限自动机(<strong>nondeterministic finite automaton NFA</strong>)</li>
 <li><font color="red">概率有限自动机(<strong>probabilistic finite automaton PFA</strong>)</font></li>
 <li><font color="red">广义有限自动机(<strong>generalized finite automaton GFA of Turakainen</strong>)</font></li>
 </ul>
@@ -450,8 +450,19 @@
 <ol>
 <li>给定一个状态个数为 $n$ 的概率有限自动机 $P$，存在一个同样状态个数为 $n$ 的单向量子有限自动机 $M$，使得对于任何字符串 $w\in \Sigma^*$，都有 $f_P(w)&#x3D;f_M(w)$。</li>
 <li>给定一个状态个数为 $n$ 的单向有限自动机 $M$，存在一个同样状态个数为 $n^2$ 的广义有限自动机 $G$，使得对于任何字符串 $w\in \Sigma^*$，都有 $f_M(w)&#x3D;f_G(W)$。</li>
-<li></li>
+<li>如果一个语言集 $L$ 能够被状态个数为 $n$ 且过程量子状态仅为纯态的单向量子有限状态机（例如：<strong>MCQFA</strong> 和 <strong>KWQFA</strong>）以 <em>bounded error</em> 接收，那么该语言集同样能够被状态个数为 $2^{O(n)}$ 的单向确定性有限自动机所识别。</li>
+<li>如果一个语言集 $L$ 能够被状态个数为 $n$ 且过程量子状态仅为混合态的单向量子有限状态机（例如：<strong>1QFA</strong>）以 <em>bounded error</em> 接收，那么该语言集同样能够被状态个数为 $2^{O(n^2)}$ 的单向确定性有限自动机所识别。</li>
 </ol>
+<h1 id="指数级降低状态数目"><a href="#指数级降低状态数目" class="headerlink" title="指数级降低状态数目"></a>指数级降低状态数目</h1><blockquote>
+<p><strong>1QFAs</strong> can indeed be exponentially more succinct than <strong>1PFAs</strong></p>
+</blockquote>
+<h2 id="Prime-Language"><a href="#Prime-Language" class="headerlink" title="Prime Language"></a>Prime Language</h2><p>我们定义由单字符(unary symbol)构成，并且该字符出现的次数能够被一个质数 $p$ 整除的字符串构成的语言集为 **$PRIME_p$**，即 $PRIME_p&#x3D;\lbrace a^i | p divides i \rbrace$</p>
+<h2 id="Succinctness-results"><a href="#Succinctness-results" class="headerlink" title="Succinctness results"></a>Succinctness results</h2><ol>
+<li>(i)如果一个质数 $p$，任何一个识别语言集 $PRIME_p$ 的 <strong>1PFA</strong> 有至少 $p$ 个状态；(ii)对任意 $\epsilon &gt; 0$，存在一个状态个数为 <em>O(log(p))</em> 的 <strong>MCQFA</strong> 以 <em>error bound $\epsilon$</em> 来识别相同的语言集 $PRIME_p$。</li>
+</ol>
+<blockquote>
+<p>test</p>
+</blockquote>
 
       
     </div>
@@ -642,7 +653,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8F%E5%AD%90%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">量子有限自动机模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8F%E5%AD%90%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%92%8C%E7%BB%8F%E5%85%B8%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BA%92%E6%A8%A1%E6%8B%9F%E5%85%B3%E7%B3%BB"><span class="nav-number">2.</span> <span class="nav-text">量子有限自动机和经典有限自动机之间的互模拟关系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9B%9E%E9%A1%BE"><span class="nav-number">2.1.</span> <span class="nav-text">经典有限自动机回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E8%AF%86%E5%88%AB-Language-recognition"><span class="nav-number">2.2.</span> <span class="nav-text">语言识别(Language recognition)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%92%E6%A8%A1%E6%8B%9F"><span class="nav-number">2.3.</span> <span class="nav-text">互模拟</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8F%E5%AD%90%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.</span> <span class="nav-text">量子有限自动机模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%87%8F%E5%AD%90%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%92%8C%E7%BB%8F%E5%85%B8%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BA%92%E6%A8%A1%E6%8B%9F%E5%85%B3%E7%B3%BB"><span class="nav-number">2.</span> <span class="nav-text">量子有限自动机和经典有限自动机之间的互模拟关系</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%8F%E5%85%B8%E6%9C%89%E9%99%90%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%9B%9E%E9%A1%BE"><span class="nav-number">2.1.</span> <span class="nav-text">经典有限自动机回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%AD%E8%A8%80%E8%AF%86%E5%88%AB-Language-recognition"><span class="nav-number">2.2.</span> <span class="nav-text">语言识别(Language recognition)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%92%E6%A8%A1%E6%8B%9F"><span class="nav-number">2.3.</span> <span class="nav-text">互模拟</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%8C%87%E6%95%B0%E7%BA%A7%E9%99%8D%E4%BD%8E%E7%8A%B6%E6%80%81%E6%95%B0%E7%9B%AE"><span class="nav-number">3.</span> <span class="nav-text">指数级降低状态数目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Prime-Language"><span class="nav-number">3.1.</span> <span class="nav-text">Prime Language</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Succinctness-results"><span class="nav-number">3.2.</span> <span class="nav-text">Succinctness results</span></a></li></ol></li></ol></div>
             
 
           </div>
