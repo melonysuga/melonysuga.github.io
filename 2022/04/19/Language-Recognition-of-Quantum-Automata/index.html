@@ -87,7 +87,7 @@
 <meta property="og:description" content="整理一波量子有限自动机（Quantum Finite Automata）的语言识别能力。 基于综述文献《Automata and Quantum Computing》所梳理。  量子有限自动机模型Quantum computation is a generalization of classical computation and QFAs should be able to simulate c">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-04-19T12:18:08.000Z">
-<meta property="article:modified_time" content="2022-04-25T02:17:22.916Z">
+<meta property="article:modified_time" content="2022-04-25T02:18:41.396Z">
 <meta property="article:author" content="Zero-Star">
 <meta property="article:tag" content="Quantum Automata">
 <meta name="twitter:card" content="summary">
@@ -456,7 +456,7 @@
 <h1 id="指数级降低状态数目"><a href="#指数级降低状态数目" class="headerlink" title="指数级降低状态数目"></a>指数级降低状态数目</h1><blockquote>
 <p><strong>1QFAs</strong> can indeed be exponentially more succinct than <strong>1PFAs</strong></p>
 </blockquote>
-<h2 id="Prime-Language"><a href="#Prime-Language" class="headerlink" title="Prime Language"></a>Prime Language</h2><p>我们定义由单字符(unary symbol)构成，并且该字符出现的次数能够被一个质数 $p$ 整除的字符串构成的语言集为 **$PRIME_p$**，即 $PRIME_p&#x3D;\lbrace a^i | p divides i \rbrace$</p>
+<h2 id="Prime-Language"><a href="#Prime-Language" class="headerlink" title="Prime Language"></a>Prime Language</h2><p>我们定义由单字符(unary symbol)构成，并且该字符出现的次数能够被一个质数 $p$ 整除的字符串构成的语言集为 $PRIME_p$，即 $PRIME_p&#x3D;\lbrace a^i | p$ divides $i \rbrace$</p>
 <h2 id="Succinctness-results"><a href="#Succinctness-results" class="headerlink" title="Succinctness results"></a>Succinctness results</h2><ol>
 <li><p>(i)如果一个质数 $p$，任何一个识别语言集 $PRIME_p$ 的 <strong>1PFA</strong> 有至少 $p$ 个状态；(ii)对任意 $\epsilon &gt; 0$，存在一个状态个数为 <em>O(log(p))</em> 的 <strong>MCQFA</strong> 以 <em>error bound $\epsilon$</em> 来识别相同的语言集 $PRIME_p$。</p>
 <blockquote>
