@@ -475,6 +475,47 @@
 </blockquote>
 <h1 id="各限制模型以有界误差识别语言的能力"><a href="#各限制模型以有界误差识别语言的能力" class="headerlink" title="各限制模型以有界误差识别语言的能力"></a>各限制模型以有界误差识别语言的能力</h1><p>对于带有界误差的语言识别能力，对前面所提出的模型从弱到强依次可以为：</p>
 <p><strong>MCQFA</strong> &lt; **LaQFA** &lt; **KWQFA** $\leq$ **NaQFA** $\leq$ <font color="red"><strong>BiQFA</strong></font> &lt; <strong>1QFA</strong> $\equiv$ <strong>1DFA</strong>$。</p>
+<p>关于 <strong>KWQFA</strong> $\leq$ <strong>NaQFA</strong> 和 <strong>NaQFA</strong> $\leq$ <strong>BiQFA</strong> 是否是严格小于的依然是开放问题。</p>
+<ul>
+<li><strong>MCQFA</strong> 无法识别所有正则语言。</li>
+<li>以 <em>bounded error</em> 识别的 <strong>KWQFA</strong> 可以识别语言类 <font color="red"> <em>BMM</em> </font> ，但是它无法识别某些正则语言，例如 ${ {a,b }^*a }\notin BMM$。如果 <em>error bound</em> <font color="red"> 越接近$\frac{1}{2}$ </font>，那么 <strong>KWQFA</strong> 可以识别更多的语言。</li>
+<li>如果 <strong>minimal 1DFA</strong> 有性质 <em>forbidden constructions</em>，那么它所能识别的语言类无法被任何以 <em>bounded error</em> 识别的 <strong>KWQFA</strong> 所识别。</li>
+<li>任何以 <em>bounded error</em> 被 <strong>BiQFA</strong> 识别的语言都在语言类 <font color="red"><em>ER</em></font>（正则语言类的一个子集）。</li>
+<li><strong>LaQFA</strong> 以及所有比 <strong>LaQFA</strong> 识别能力更强的模型能够识别所有一元正则语言（unary regular language）。</li>
+</ul>
+<h1 id="无界误差、非确定性和交替-Unbounded-error-Nondeterminism-and-Alternation"><a href="#无界误差、非确定性和交替-Unbounded-error-Nondeterminism-and-Alternation" class="headerlink" title="无界误差、非确定性和交替(Unbounded-error, Nondeterminism, and Alternation)"></a>无界误差、非确定性和交替(Unbounded-error, Nondeterminism, and Alternation)</h1><p>在无界误差的情况下，<strong>1PFA</strong> 和 <strong>1QFA</strong> 以及 <strong>GFA</strong> 的语言识别能力是等价的。也就是说，以割点被 <strong>1PFA</strong> 识别的语言同样能够以割点被 <strong>1QFA</strong> 识别；而被 <strong>1QFA</strong>识别的语言同样可以被 <strong>GFA</strong> 识别； 而任何以割点被 <strong>GFA</strong> 识别的语言都是随机的（stochastic）。</p>
+<h1 id="可判定和不可判定结果-Decidability-and-Undecidability-Results"><a href="#可判定和不可判定结果-Decidability-and-Undecidability-Results" class="headerlink" title="可判定和不可判定结果(Decidability and Undecidability Results)"></a>可判定和不可判定结果(Decidability and Undecidability Results)</h1><blockquote>
+<p>Here we consider decidability and complexity of various problems involving one-way QFAs whose transitions are defined using computable numbers or a subset of computable numbers.(e.g. rational or algebraic numbers)</p>
+</blockquote>
+<ol>
+<li><p><strong>等价性和最小化问题(Equivalence and Minimization)</strong></p>
+<ul>
+<li>如果两个自动机 $\mathcal{A}_1$ 和 $\mathcal{A}<em>2$ 对于所有输入字符串 $s\in \Sigma^*$ 都有 $f</em>{\mathcal{A}<em>1}(s)&#x3D;f</em>{\mathcal{A}<em>2}(s)$，那么我们就称这两个自动机等价；如果对于任何长度上限为 $l$ 的输入字符串 $s\in \Sigma^*$ 都有$f</em>{\mathcal{A}<em>1}(s)&#x3D;f</em>{\mathcal{A}_2}(s)$，那么我们就称这两个自动机$l$-等价。</li>
+<li>已知对于 <strong>GFA</strong> 而言，任意两个 状态数目分别为 $n_1$ 和 $n_2$ 的<strong>GFA</strong>s $\mathcal{G}_1$ 和 $\mathcal{G}_2$ 是等价的，当且仅当它们两个是 $(n_1+n_2-1)$-等价的。</li>
+<li>任何状态数为 $n$ 的 <strong>1QFA</strong> 能够由状态数目为 $n^2$ 的 <strong>GFA</strong> 互模拟，因此任意两个状态数为 $n_1$ 和 $n_2$ 的 <strong>1QFA</strong>s $\mathcal{M}_1$ 和 $\mathcal{M}_2$ 等价，当且仅当它们是 $n_1^2+n_2^2-1$-等价的。</li>
+<li>可以在多项式时间内验证两个振幅是有理数的 <strong>1QFA</strong>s 之间的等价性。 </li>
+<li>振幅是代数数(algebraic numbers)的 <strong>1QFA</strong> 的最小化问题是可判定的。</li>
+<li>如果 <strong>1QFA</strong> 的转移算子是有理数(rational numbers) ，那么最小化量子自动机的问题可以在指数空间内解决。</li>
+<li>对于识别 <em>unary periodic language</em> 的 <strong>MCQFA</strong> 的最小化问题能够在指数时间内解决。</li>
+</ul>
+</li>
+<li><p><strong>空集问题和孤立切割点相关问题(Emptiness Problems and Problems Regarding Isolated Cutpoint)</strong></p>
+</li>
+</ol>
+<blockquote>
+<p>We continue with five emptiness problems and two problems regarding isolated cutpoints. Let $\mathcal{A}$ be an automaton and $\lambda$ be a cutpoint.</p>
+</blockquote>
+<ol>
+<li>Given $\mathcal{A}$ and $\lambda \in [0,1]$, is there any $w\in \Sigma^*$, $f_{\mathcal{A}}(w)\ge \lambda$?</li>
+<li>Given $\mathcal{A}$ and $\lambda \in [0,1]$, is there any $w\in \Sigma^*$, $f_{\mathcal{A}}(w)\le \lambda$?</li>
+<li>Given $\mathcal{A}$ and $\lambda \in [0,1]$, is there any $w\in \Sigma^*$, $f_{\mathcal{A}}(w)&#x3D; \lambda$?</li>
+<li>Given $\mathcal{A}$ and $\lambda \in [0,1]$, is there any $w\in \Sigma^*$, $f_{\mathcal{A}}(w)&gt; \lambda$?</li>
+<li>Given $\mathcal{A}$ and $\lambda \in [0,1]$, is there any $w\in \Sigma^*$, $f_{\mathcal{A}}(w)&lt; \lambda$?</li>
+<li>Given $\mathcal{A}$ and $\lambda \in (0,1)$, is the cutpoint isolated?</li>
+<li>Given $\mathcal{A}$, is there a cutpoint $\lambda’$ which is isolated?</li>
+</ol>
+<p>All of these problems are known to be undecidable for <strong>1PFA</strong>s with rational-valued transitions and rational cutpoints.</p>
+<p>Problems 1-6 are undecidable for general <strong>1QFA</strong>s with rational-valued transitions and rational cutpoints,<br>and Problem 7 is undecidable for general <strong>1QFA</strong>s with rational-valued transitions.</p>
 
           
         
